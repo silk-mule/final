@@ -1,0 +1,46 @@
+#include<iostream>
+#include<string>
+#include<fstream>
+using namespace std;
+class stud{
+    private: 
+    string rollno;
+    string name;
+    int totalsubject;
+    int obtmarks;
+    int average;
+    int ave(int ob,int to){
+        return ob/to;
+    }
+    public:
+    void data(int index){
+        cout<<"Enter the roll number of student: "<<index+1<<": ";
+        cin>>rollno;
+        cout<<"Enter the name of student "<<index+1<<": ";
+        cin.ignore();
+        getline(cin,name); 
+        cout<<"Enter the total number of subjects:";
+        cin>>totalsubject;
+        cout<<"Enter the total marks obtained by student: ";
+        cin>>obtmarks;
+        average = ave(obtmarks,totalsubject);
+    }
+   void save(ofstream &r){
+r<<rollno<<"\t"<<name<<"\t"<<totalsubject<<"\t"<<obtmarks<<"\t"<<average<<endl;
+   }
+};
+int main(){
+int num;
+cout<<"Enter the number of students: "<<endl;
+cin>>num;
+stud *s = new stud[num];
+for(int i=0; i<num; i++){
+    s[i].data(i);
+}
+ofstream ne("data.txt");
+ne<< "Roll No\tName\tTotal Subjects\tObtained Marks\tAverage Marks\n";
+for(int i=0; i<num; i++){
+s[i].save(ne);
+}
+return 0;
+}
