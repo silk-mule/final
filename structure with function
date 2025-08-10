@@ -25,6 +25,9 @@ struct Person{
     int calculate(int a , int b){
         return a*b*30;
     }
+    int yearlySalary(){
+        return calculate(hours, perhour)*12*(1-0.17);
+    }
 };
 main(){
 int per;
@@ -46,7 +49,7 @@ for(int i=0; i<per; i++){
     cin>>p[i].perhour;
     int salary = p[i].calculate(p[i].hours,p[i].perhour);
     cout<<"The salary of "<<p[i].name<<" is: "<<salary<<endl;
-    sal<<p[i].id<<"  "<<p[i].name<<"  "<<p[i].designation<<"  "<<p[i].hours<<"  "<<p[i].perhour<<"  "<<salary<<endl;
+    sal<<p[i].id<<"  "<<p[i].name<<"  "<<p[i].designation<<"  "<<p[i].hours<<"  "<<p[i].perhour<<"  "<<salary<<" "<<p[i].yearlySalary()<<endl;
 }
     sal.close();
 
